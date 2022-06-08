@@ -7,21 +7,21 @@
  */
 int main(void)
 {
-	long int i, j, k, next;
-	j = 1;
-	k = 2;
-	for (i = 1; i <= 50; ++i)
+	int inc;
+	unsigned long n1 = 0, n2 = 1, n3;
+	for (inc = 0; inc < 50; inc++)
 	{
-		if (j != 20365011074)
-		{
-			printf("%ld, ", j);
-		}
+		n3 = n1 + n2;
+		printf("%lu", n3);
+		n1 = n2;
+		n2 = n3;
+
+		if (inc == 49)
+			printf("\n");
 		else
-		{
-		}
-		next = j + k;
-		j = k;
-		k = next;
+			printf(", ");
+
 	}
+
 	return (0);
 }
