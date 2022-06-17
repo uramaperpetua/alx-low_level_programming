@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
- * leet - function that encode a string
- *@str:string that will be encoded
- *Return:returns encoded string
+ * leet - Entry point
+ * @s: input string.
+ * Return: Always 0.
  */
-char *leet(char *str)
+
+char *leet(char *s)
 {
 	int count = 0, i;
 	int low_letters[] = {97, 101, 111, 116, 108};
@@ -25,7 +26,5 @@ char *leet(char *str)
 		}
 		count++;
 	}
-
-
 	return (s);
 }
