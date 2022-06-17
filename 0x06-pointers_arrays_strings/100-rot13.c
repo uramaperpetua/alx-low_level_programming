@@ -15,7 +15,8 @@ char *rot13(char *s)
 
 	while (*(s + count) != '\0')
 	{
-		for (i = 0; i < 52; i++)													{
+		for (i = 0; i < 52; i++)
+		{
 			if (*(s + count) == alphabet[i])
 			{
 				*(s + count) = rot13[i];
@@ -24,6 +25,7 @@ char *rot13(char *s)
 		}
 		count++;
 	}
+
 
 	return (s);
 }
