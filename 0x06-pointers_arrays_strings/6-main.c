@@ -14,5 +14,5 @@ int main(void)
 	ptr = cap_string(str);
 	printf("%s", ptr);
 	printf("%s", str);
-return (0);
+	return (0);
 }
