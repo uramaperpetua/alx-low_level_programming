@@ -6,37 +6,41 @@
  *@str: string to be added
  *
  * Return: returns the address to the new element or NULL
- * if failed
+ */
+unsigned int _length(char *str)
+{
+	unsigned int i;
+
+	if (str == NULL)
+		return (0);
+
+	for (i = 0; str[i]; i++)	
+		;
+	return (i);
+}
+
+/**
+ * *add_node - function to add node at the beginning of a list
+ * @head: first node in the list
+ * @str: str to add in the list
+ *
+ * Return: address of the new element on success or NULL
  */
 
 list_t *add_node(list_t **head, const char *str)
 {
-	char *dup;
-	int len;
-
 	list_t *new;
 
-	new = malloc(sizeof(list_t));
+	new = (list_t *) malloc(sizeof(list_t));
 
 	if (new == NULL)
-		return (NULL);
-
-	dup = strdup(str);
-	if (dup == NULL)
 	{
 		free(new);
 		return (NULL);
 	}
-	for (len = 0; str[len];)
-		len++;
-
-
-	new->str = dup;
-	new->len = len;
+	new->str = strdup(str);
+	new->len = _length(new->str);
 	new->next = *head;
-
-
 	*head = new;
-
-	return (new);
+	return (*head);
 }
