@@ -9,43 +9,56 @@
  *or address or the element
  */
 
+unsigned int _length(char *str)
+{
+	unsigned int i;
+
+	if (str == NULL)
+		return (0);
+
+	for (i = 0; str[i]; i++)
+		;
+	return (i);
+}
+
+/**
+ * add_node_end - function to add node at the end of the list
+ * @head: pointer to the head of the list
+ * @str: pointer to the string
+ *
+ * Return: address of new element
+ */
 list_t *add_node_end(list_t **head, const char *str)
 {
-	char *dup;
-	int len;
+	list_t *new, *temp;
 
-	list_t *new, *last;
+	new = (list_t *) malloc(sizeof(list_t));
 
-	new = malloc(sizeof(list_t));
 	if (new == NULL)
-		return (NULL);
-
-	dup = strdup(str);
-	if (str == NULL)
 	{
-
 		free(new);
 		return (NULL);
 	}
-
-
-	for (len = 0; str[len];)
-		len++;
-
-
-	new->str = dup;
-	new->len = len;
+	new->str = strdup(str);
+	new->len = _length(new->str);
 	new->next = NULL;
 
 
 	if (*head == NULL)
-		*head = new;
-	else
 	{
-		last = *head;
-		while (last->next != NULL)
-			last = last->next;
-		last->next = new;
+		*head = new;
+		return (new);
 	}
-	return (*head);
+
+
+	temp = *head;
+
+
+	while (temp != NULL && temp->next != NULL)
+		temp = temp->next;
+
+
+	temp->next = new;
+
+	return (new);
 }
